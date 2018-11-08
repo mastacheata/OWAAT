@@ -20,6 +20,6 @@ services:
     ports:
     - "8100:80"
     environment:
-      XDEBUG_CONFIG: remote_host=192.168.24.41
+      XDEBUG_CONFIG: remote_host=192.168.24.63
     stdin_open: true
     tty: true

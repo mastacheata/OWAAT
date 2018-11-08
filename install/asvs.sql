@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `assessment` (
   `description` text NOT NULL,
   `complete` tinyint(1) NOT NULL DEFAULT '0',
   `create_time` datetime NOT NULL,
-  `complete_time` datetime NOT NULL,
+  `complete_time` datetime,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
@@ -56,8 +56,8 @@ CREATE TABLE IF NOT EXISTS `assignment` (
   `user_id` mediumint(9) NOT NULL,
   `assessment_id` mediumint(9) NOT NULL,
   `status` mediumint(9) NOT NULL,
-  `admin_comment` text NOT NULL,
-  `user_comment` text NOT NULL,
+  `admin_comment` text,
+  `user_comment` text,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
@@ -93,20 +93,21 @@ CREATE TABLE IF NOT EXISTS `chapters` (
 --
 
 INSERT INTO `chapters` (`id`, `chapter_name`) VALUES
-(1, 'Architecture'),
+(1, 'Architecture, Design and Threat Modeling'),
 (2, 'Authentication'),
 (3, 'Session Management'),
 (4, 'Access Control'),
-(5, 'Input validation and output encoding'),
+(5, 'Validation, Sanitization and Encoding'),
 (7, 'Cryptography'),
-(8, 'Error Handling'),
+(8, 'Error Handling and Logging'),
 (9, 'Data Protection'),
 (10, 'Communications'),
+(11, 'HTTP Security Configuration'),
 (13, 'Malicious Code'),
-(15, 'Business Logic Flaws'),
+(15, 'Business Logic'),
 (16, 'Files and Resources'),
 (17, 'Mobile'),
-(18, 'API'),
+(18, 'API and Web Service'),
 (19, 'Configuration'),
 (20, 'Internet of Things');
 

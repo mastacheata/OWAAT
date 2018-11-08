@@ -39,7 +39,7 @@
 		$user_id = (int) $_GET['user_id'];
 	
 		$result_user = mysqli_query($con, "SELECT id FROM users WHERE id = ".$user_id.";") or error($PN.'12', $con);
-		if(!mysqli_fetch_row($con, $result_user))
+		if(!mysqli_fetch_row($result_user))
 			error($PN.'13', $con);
 		
 		$result = mysqli_query($con, "SELECT A.id AS assignment_id, B.assessment_name FROM (SELECT id, user_id, assessment_id FROM assignment WHERE user_id = ".$user_id." AND status != 3) AS A LEFT JOIN (SELECT id, assessment_name FROM assessment WHERE complete = 0) AS B ON A.assessment_id = B.id ORDER BY B.assessment_name;") or error($PN.'14', $con);
@@ -48,7 +48,7 @@
 	{
 		$assignment_id = (int) $_GET['assignment_id'];
 		$result_assignment = mysqli_query($con, "SELECT id FROM assignment WHERE id = ".$assignment_id.";") or error($PN.'15', $con);
-		if(!mysqli_fetch_row($con, $result_assignment))
+		if(!mysqli_fetch_row($result_assignment))
 			error($PN.'16', $con);
 		
 		$result = mysqli_query($con, "SELECT A.chapter_id, B.chapter_name FROM (SELECT chapter_id FROM assignment_chapter WHERE assignment_id = ".$assignment_id." AND status != 3) AS A LEFT JOIN (SELECT id, chapter_name FROM chapters) AS B ON A.chapter_id = B.id ORDER BY A.chapter_id;") or error($PN.'17', $con);

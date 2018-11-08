@@ -270,7 +270,7 @@
 			error($PN.'36', $con);
 		
 		$result = mysqli_query($con, "SELECT COUNT(*) FROM assignment WHERE user_id = ".$id.";") or error($PN.'37', $con);
-		$row = mysqli_fetch_row($con, $result);
+		$row = mysqli_fetch_row($result);
 		if($row[0] > 0)
 			error($PN.'38', $con);
 

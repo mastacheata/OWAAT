@@ -1,7 +1,7 @@
 <?php
 
-$organization_name = '';
-$organization_address = '';
-$image_name = '';
+$organization_name = 'Empto';
+$organization_address = 'Empto';
+$image_name = 'empto-logo.mini (3).png';
 
 ?>

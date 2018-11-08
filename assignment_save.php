@@ -76,7 +76,12 @@
 	if(!$array_user)
 		error($PN.'30', $con);
 
-	$result_user = mysqli_query($con, "SELECT id FROM chapters WHERE id IN (".$chapters_id.");") or error($PN.'31', $con);
+	if ($chapters_id === '0') {
+        $result_user = mysqli_query($con, "SELECT id FROM chapters;") or error($PN.'31', $con);
+    }
+    else {
+        $result_user = mysqli_query($con, "SELECT id FROM chapters WHERE id IN (".$chapters_id.");") or error($PN.'31', $con);
+    }
 	$array_user = mysqli_fetch_array($result_user);
 	if(!$array_user)
 		error($PN.'32', $con);
@@ -122,7 +127,7 @@
 		foreach ($chapters_id_array as $chapterID) {
 			$chapter_id = (int)$chapterID;
 			$result_chapter = mysqli_query($con, "SELECT COUNT(*) FROM chapters WHERE id = ".$chapter_id.";") or error($PN.'24', $con);
-			$array_chapter = mysqli_fetch_row($con, $result_chapter);
+			$array_chapter = mysqli_fetch_row($result_chapter);
 			if($array_chapter[0] == 1)
 			{
 				$result = mysqli_query($con, "SELECT id FROM assignment_chapter WHERE assignment_id = ".$assignment_id." and chapter_id = ".$chapter_id.";") or error($PN.'25', $con);

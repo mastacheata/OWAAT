@@ -57,6 +57,7 @@
 		$con = mysqli_connect($host,$user,$pass,$databaseName);
 		if(!$con)
 			error($PN.'23');
+        mysqli_set_charset($con, 'utf8');
 
 		mysqli_query($con, "CREATE DATABASE IF NOT EXISTS ".$databaseName);
 
@@ -64,7 +65,7 @@
 
 		try
 		{
-			$db = new PDO('mysql:host='.$host.';dbname='.$databaseName, $user, @$pass);
+			$db = new PDO('mysql:host='.$host.';dbname='.$databaseName.';charset=UTF8', $user, @$pass);
 
 			$sql = file_get_contents('asvs.sql');//Load SQL Commands From The File.
 
@@ -92,6 +93,7 @@
 \$databaseName = '".$databaseName."';
 
 \$con = mysqli_connect(\$host,\$user,\$pass,\$databaseName) or error(\$PN.'10');
+mysqli_set_charset(\$con, 'utf8');
 
 ?>");
 
